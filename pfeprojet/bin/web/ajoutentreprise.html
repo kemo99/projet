@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Ajout d'une entreprise</title>
+    <meta charset="UTF-8" />
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+
+ <body>
+  <header class="header">
+    	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
+    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+ </header>
+  <br><br><br><br><br><br><br>
+ <div id="bloc_page">
+ 
+
+    
+
+<form action="ajoutentreprise" method="post">
+  <fieldset>
+                <legend><b>Remplir les champs du formulaire</b></legend>
+				<br />
+				
+                <label for="nomEntreprise"><i>Nom de l'entreprise <font color="#ff0000">*</font></i></label>
+                <input type="text" name="nomEntreprise" required placeholder="Nom..."  size="20"/>
+                <br /><br />
+				<label for="adresse"><i>Adresse de l'entreprise <font color="#ff0000">*</font></i></label>
+                <input type="text" name="adresse" required placeholder="Adresse entreprise..." size="40"/>
+                <br /><br />
+                <label for="telEntreprise"><i>numéro de téléphone <font color="#ff0000">*</font></i></label>
+                <input type="tel" name="telEntreprise" required placeholder="Telephone..."/ size="20">
+                <br /><br />
+                <input type="submit" value="Valider">
+  </fieldset>
+  
+  <!--  
+  <p>Nom de l'entreprise: <input type="text" name="nomEntreprise" required placeholder="Nom..." /></p>
+  
+  <p>Adresse de l'entreprise: <input type="text" name="adresse" required placeholder="Adresse entreprise..."> 
+     numéro de téléphone : <input type="tel" name="telEntreprise" required placeholder="Telephone..."> 
+  </p>
+  <input type="submit" value="Valider">
+  
+</form> 
+-->
+<hr />
+
+</div>
+  </body>
+</html>

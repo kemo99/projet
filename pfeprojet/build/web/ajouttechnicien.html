@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Ajout d'un technicien</title>
+    <meta charset="UTF-8" />
+    <link href="style.css" rel="stylesheet" type="text/css">
+     
+    
+   
+   <script type="text/javascript" charset="utf-8">
+   function checknum(num){
+	    var valide = /^0[1-6]\d{8}$/;
+	    if(valide.test(num){
+	        alert('Bon numéro !');
+	    }
+	    else{
+	        alert('Mauvais numéro !');
+	    }
+	}
+    </script> 
+   
+   
+  </head>
+ <body>	
+  <header class="header">
+    	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
+    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+ </header>
+  <br><br><br><br><br><br><br>
+ <div id="bloc_page">
+
+<form action="ajouttechnicien" method="post" >
+  <fieldset>
+                <legend><b>Remplir les champs du formulaire</b></legend>
+				<br />
+                <label for="nomTechnicien"><i>Nom du technicien <font color="#ff0000">*</font></i></label>
+                <input type="text" name="nomTechnicien" required placeholder="Nom..." size="20"/>
+                <br /><br />
+                <label for="prenomTechnicien"><i>Prenom du technicien <font color="#ff0000">*</font></i></label>
+                <input type="text" name="prenomTechnicien" required placeholder="Prenom..." size="20"/>
+                <br /><br />
+				<label for="adresse"><i>Adresse <font color="#ff0000">*</font></i></label>
+                <input type="text" name="adresse" required placeholder="Adresse..." size="40"/>
+                <br /><br />
+                <label for="telTechnicien"><i>numéro de téléphone <font color="#ff0000">*</font></i></label>
+                <!-- <input type="text" name="telTechnicien" required placeholder="Telephone..." size="20" onblur="Numero_Valid(this)"/>
+                
+                 -->
+                 <input type="text" name="telTechnicien" required placeholder="Telephone..." size="20" onblur="checknum(this.value)"/>
+                
+                 <br /><br />
+                <input type="submit" value="Valider" >
+  </fieldset>
+  
+  
+  
+  <!--  
+  <p>Nom du technicien : <input type="text" name="nomTechnicien" required placeholder="Nom..." />
+  Prenom du technicien : <input type="text" name="prenomTechnicien" required placeholder="Nom..." /></p>
+  <p>Adresse: <input type="text" name="adresse" required placeholder="Adresse ..."> 
+     numéro de téléphone : <input type="text" name="telTechnicien" required placeholder="Telephone..."> </p>
+  <input type="submit" value="Valider">
+  -->
+</form> 
+<hr />
+
+</div>
+  </body>
+</html>
