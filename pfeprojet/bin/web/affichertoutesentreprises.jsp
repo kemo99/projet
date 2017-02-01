@@ -26,12 +26,13 @@
 
     </script>
   </head>
-<body id="bloc_page">
+<body >
+<div  id="bloc_page">
  <header class="header">
     	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
-    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+    	       
  </header>
-  <br><br><br><br><br><br><br> 	
+  <br><br><br>	
 	 
 		<%@ page import="java.net.URL" %>
         <%@ page import="java.net.URLConnection" %>
@@ -64,10 +65,11 @@
     			Object obj = ctx.lookup("ejb:pfeprojet/pfeprojetSessions/"+ "ServicepfeprojetBean!ejb.sessions.ServicepfeprojetRemote");
     			ServicepfeprojetRemote service = (ServicepfeprojetRemote) obj;
     			out.print("<br> <table id=\"datatables\" class=\"display\" >");
-    			out.print("<thead><tr><th> Nom du client </th><th> Adresse du client </th><th> Numero de telephone du client </th><th>Fiche du client</th></tr>");
+    			out.print("<thead><tr><th> Client </th><th> Adresse </th><th> Télephone </th><th> Mail </th><th>Interlocuteur </th><th>Fiche du client</th></tr>");
     			out.print("</thead><tbody>");
     			for(i=0;i<service.getlisteEntreprises().size();i++){
-    				out.print(" <tr><td > "+service.getlisteEntreprises().get(i).getNom()+"</td><td>"+service.getlisteEntreprises().get(i).getAdresse()+"</td><td>"+service.getlisteEntreprises().get(i).getTel()+"</td><td> <form action=\"ficheentreprise\" method=\"POST\" ><input type=\"hidden\" id=\"thisField\" name=\"numEntreprise\" value="+service.getlisteEntreprises().get(i).getNumero()+"> <input type=\"submit\" name=\" Consulter la fiche \" value=\" Consulter la fiche \" /></form></td></tr>");
+    				out.print(" <tr><td > "+service.getlisteEntreprises().get(i).getNom()+"</td><td>"+service.getlisteEntreprises().get(i).getAdresse()+"</td><td>"+service.getlisteEntreprises().get(i).getTel()+
+    						"<td>"+service.getlisteEntreprises().get(i).getAdressemail()+"</td> "+"<td>"+service.getlisteEntreprises().get(i).getNominterlocuteur()+"</td> "+"</td><td> <form action=\"ficheentreprise\" method=\"POST\" ><input type=\"hidden\" id=\"thisField\" name=\"numEntreprise\" value="+service.getlisteEntreprises().get(i).getNumero()+"> <input type=\"submit\" name=\" Consulter la fiche \" value=\" Consulter la fiche \" /></form></td></tr>");
     			}
     			out.print("</tbody></table>");
     			
@@ -79,7 +81,7 @@
         %>
 		         
 		
-
+</div>
 </body>
 </html>
 

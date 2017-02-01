@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Ajout d'une entreprise</title>
+<meta charset="UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+   <script language="JavaScript">
+   function checknum(f){
+	    var valide = new RegExp (/^07[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/);
+	    if(valide.test(f.telTechnicien.value)){
+	    	return true;
+	    }
+	    else {
+	    	alert('Mauvais numéro !');
+	    	return false;
+	    }
+	}
+    </script> 
+	<header class="header">
+		<a class="logo" href="http://www.desentec.fr/"><img
+			src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png">
+		</a>
+		<p class="head">
+		<center>
+			<strong>Desentec - Protection incendie</strong>
+		</center>
+		</p>
+	</header>
+	<div id="bloc_page">
+		<center>
+			<h1>Remplir les champs du formulaire</h1>
+			<form action="ajoutentreprise" onsubmit="return checknum(this);">
+				<p>
+					Nom de l'entreprise: <input type="text" name="nomEntreprise" required placeholder="Nom..." />
+				</p>
+				<p>
+					Adresse de l'entreprise: <input type="text" name="adresse" required placeholder="Adresse entreprise..."> 
+				</p>
+				<p>
+					Adresse e-mail : <input type="text" name="adresseemailEntreprise" required placeholder="Adresse email...">
+				</p>
+				<p>
+					numéro de téléphone : <input type="text" name="telEntreprise" required placeholder="Telephone...">
+				</p>
+				<p>
+					Nom de l'interlocuteur : <input type="text" name="nomInterlocuteur" required placeholder="Nom interlocuteur...">
+				</p>
+				<input type="submit" value="Valider">
+			</form>
+			<hr />
+		</center>
+	</div>
+</body>
+</html>

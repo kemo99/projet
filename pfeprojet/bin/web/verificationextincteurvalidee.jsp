@@ -9,11 +9,7 @@
 		<a class="logo" href="http://www.desentec.fr/"><img
 			src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png">
 		</a>
-		<p class="head">
-		<center>
-			<strong>Desentec - Protection incendie</strong>
-		</center>
-		</p>
+		
 	</header>
 	<%@ page import="java.net.URL"%>
 	<%@ page import="java.net.URLConnection"%>
@@ -29,7 +25,9 @@
 	<%@ page import="java.text.DateFormat"%>
 
 	<%!String numBat, conclusion, observation;
-	int num, i;%>
+	int num, i;
+	List<Extincteur> E;
+	%>
 
 	<%
 		session = request.getSession();
@@ -42,19 +40,19 @@
 		session.setAttribute("num", numBat);
 		num = Integer.parseInt(numBat);
 		conclusion = request.getParameter("Conclusion");
-
+		E=(List<Extincteur>)session.getAttribute("Extincteurs");
+		
 		String format = "yyyy-MM-dd";
 		java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat(format);
 		java.util.Date date = new java.util.Date();
 
-		for (i=0;i < service.rechercheBatimentnum(num).getOrganes().size(); i++) {
-			if(service.rechercheBatimentnum(num).getOrganes().get(i) instanceof Extincteur) { 
+		for (i=0;i <E.size(); i++) {
 				observation = request.getParameter(String.valueOf(i));
-				service.Verification(service.rechercheBatimentnum(num).getOrganes().get(i).getNumero(), observation, conclusion, 1,
+				service.Verification(service.rechercheOrgane(E.get(i).getNumero()).getNumero(),observation,conclusion,1,
 					Date.valueOf(formater.format(date)));
-			}
 		}
 		out.println("<center><br>Intervention effectuée avec succès");
+		E.clear();
 		out.println("<a href=\"fichebatiment.jsp\">retour à la fiche du bâtiment</a></center>");
 	%>
 </body>

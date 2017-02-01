@@ -4,36 +4,85 @@
     <title>Ajout d'une entreprise</title>
     <meta charset="UTF-8" />
     <link href="style.css" rel="stylesheet" type="text/css">
+    
+    
   </head>
 
- <body>
+ <body >
+ <div id="bloc_page">
   <header class="header">
     	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
-    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+    	       
  </header>
+ <Script language = "JavaScript"> 
+    fonction checknum (f) { 
+	   var = new RegExp valide (/ ^ 07 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9] [0-9] [0-9] $ /); 
+	   if (valide.test (f.telEntreprise.value)) { 
+	     return true; 
+	   } 
+	   else { 
+	     alert ( 'Mauvais numéro!'); 
+	   return false; 
+	   } 
+	  } 
+    </script> 
   <br><br><br><br><br><br><br>
- <div id="bloc_page">
+ 
  
 
     
 
-<form action="ajoutentreprise" method="post">
+<form action="ajoutentreprise" method="post" onsubmit = "checknum de retour (this);" >
+
   <fieldset>
                 <legend><b>Remplir les champs du formulaire</b></legend>
 				<br />
-				
+		<table>	
+		 <tr> <td>
                 <label for="nomEntreprise"><i>Nom de l'entreprise <font color="#ff0000">*</font></i></label>
-                <input type="text" name="nomEntreprise" required placeholder="Nom..."  size="20"/>
-                <br /><br />
-				<label for="adresse"><i>Adresse de l'entreprise <font color="#ff0000">*</font></i></label>
-                <input type="text" name="adresse" required placeholder="Adresse entreprise..." size="40"/>
-                <br /><br />
+              </td> <td> 
+                <input type="text" name="nomEntreprise" required placeholder="Nom..."  size="40" class="taille_input_annee"/>
+              </td>
+         </tr>  
+          <tr></tr>
+         <tr> <td>
+				  <label for="adresse"><i>Adresse de l'entreprise <font color="#ff0000">*</font></i></label>
+              </td> <td>
+               
+                 <textarea name="adresse" rows="5" cols="47" required placeholder="Adresse entreprise..."></textarea>
+               </td>
+          </tr>  
+          <tr></tr>  
+              
+               
+               
+          <tr><td>
                 <label for="telEntreprise"><i>numéro de téléphone <font color="#ff0000">*</font></i></label>
-                <input type="tel" name="telEntreprise" required placeholder="Telephone..."/ size="20">
-                <br /><br />
-                <input type="submit" value="Valider">
-  </fieldset>
+               </td> <td>
+                <input type="tel" name="telEntreprise" required placeholder="Telephone..." size="40" class="taille_input_annee"/>
+              </td>
+          </tr>  
+          <tr></tr> 
+            <tr><td>   
+                 <label for="adresseemailEntreprise"><i> Adresse e-mail <font color="#ff0000">*</font></i></label>
+                </td> <td>
+                    <input type="text" name="adresseemailEntreprise" required placeholder="Adresse email..." size="40" class="taille_input_annee"/>
+               </td>
+          </tr>  
+          <tr></tr> 
+            <tr><td> 
+               <label for="nomInterlocuteur"><i>  Nom de l'interlocuteur <font color="#ff0000">*</font></i></label>
+                </td> <td> 
+                   <input type="text" name="nomInterlocuteur" required placeholder="Nom interlocuteur..."size="40" class="taille_input_annee"/>
+              </td>
+          </tr>   
+               
+       </table>
+        <br /><br />
+          <center>      <input  type="submit" value="Valider"> </center>
+   </fieldset>  
   
+ </form> 
   <!--  
   <p>Nom de l'entreprise: <input type="text" name="nomEntreprise" required placeholder="Nom..." /></p>
   

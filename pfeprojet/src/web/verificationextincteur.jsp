@@ -3,17 +3,33 @@
 <title>Verification d'un Extincteur</title>
 <meta charset="UTF-8" />
 <link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="datatables.css" />
+    <script type="text/javascript" src="jquery.dataTables.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+
+
+     $(document).ready(function(){
+     $('#datatables').dataTable();
+    
+     })
+
+    </script>
 </head>
 <body>
+<div  id="bloc_page">
 	<header class="header">
 		<a class="logo" href="http://www.desentec.fr/"><img
 			src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png">
 		</a>
-		<p class="head">
-		<center>
-			<strong>Desentec - Protection incendie</strong>
-		</center>
-		</p>
+		
 	</header>
 	<%@ page import="java.net.URL"%>
 	<%@ page import="java.net.URLConnection"%>
@@ -25,8 +41,8 @@
 	<%@ page import="javax.naming.InitialContext"%>
 	<%@ page import="javax.naming.NamingException"%>
 
-	<%!String numBat, observation;
-	int num, i,j;
+	<%!String numBat,conclusion, observation;
+	int num,i;
 	List<Extincteur> E = new ArrayList<Extincteur>();
 	%>
 	<%
@@ -35,43 +51,35 @@
 		Object obj = ctx.lookup(
 				"ejb:pfeprojet/pfeprojetSessions/" + "ServicepfeprojetBean!ejb.sessions.ServicepfeprojetRemote");
 		ServicepfeprojetRemote service = (ServicepfeprojetRemote) obj;
-
 		numBat = String.valueOf(session.getAttribute("num"));
 		session.setAttribute("num", numBat);
 		num=Integer.parseInt(numBat);
 		
-		// Verification de la liste des organes
-		out.println("<br>numero du batiment"+service.rechercheBatimentnum(num).getNumero());
-		out.println("<br>liste des extincteurs du batiment : ");
-		for(i=0;i<service.rechercheBatimentnum(num).getOrganes().size();i++){
-			out.println("<br> Numero de l'extincteur"+service.rechercheBatimentnum(num).getOrganes().get(i).getNumero());
-		}
-		
-		
-		
+		E.clear();
+		E=service.rechercheExtincteurBatiment(num);
+		out.println("<br><center><h2>Verification des extincteurs</h2></center><br>");
 		// Tableau
-		out.println("<br><form action=\"verificationextincteurvalidee.jsp\"> <table border=\"1\" cellpadding=\"10\" cellspacing=\"1\" width=\"100%\"> <tr><th width=\"10%\" align=\"center\"> Numero de l'organe </th><th width=\"20%\" align=\"center\"> Emplacement </th> <th width=\"40%\" align=\"center\"> Observation </th></tr>");
-		for(i=0;i<service.rechercheBatimentnum(num).getOrganes().size();i++){
-			if(service.rechercheBatimentnum(num).getOrganes().get(i) instanceof Extincteur){
-				if(service.getVerification(service.rechercheBatimentnum(num).getOrganes().get(i)).size()==0)
-					observation="--";
-				else{
-					List<Verification> verif = service.getVerification(service.rechercheBatimentnum(num).getOrganes().get(i));
-					List<Verification> verif2=  service.getVerification(service.rechercheBatimentnum(num).getOrganes().get(i));
-					//observation = verif.get(verif2.size() -1).getObservation();
-					Verification verif3 = verif.get(verif.size() -1);
-					observation = verif3.getObservation();
-					//observation=service.getVerification(service.rechercheBatimentnum(num).getOrganes().get(i)).get(service.getVerification(service.rechercheBatimentnum(num).getOrganes().get(i)).size()-1).getObservation();
-				}
-				out.println(" <tr><td align=\"center\"> " + service.rechercheBatimentnum(num).getOrganes().get(i).getNumero()+
-						"</td> <td align=\"center\">" + service.rechercheBatimentnum(num).getOrganes().get(i).getEmplacement()+
-						"</td> <td align=\"center\"> <input type=\"text\" name="+i+" value="+observation+"><t/d></tr>"
+		out.println("<br><form action=\"verificationextincteurvalidee.jsp\">");
+		out.print("<br> <table id=\"datatables\" class=\"display\" >");
+		out.print("<thead><tr><th> N° Extincteur </th><th> Emplacement </th><th> Type extincteur </th><th>  Marque </th><th>Annee </th><th>Observation</th></tr>");
+		out.print("</thead><tbody>");
+	      
+		for(i=0;i<E.size();i++){
+					observation=service.rechercheObservationVerification(E.get(i).getNumero());
+					conclusion=service.rechercheConclusionVerification(E.get(i).getNumero());
+					out.println(" <tr><td > " + E.get(i).getNumero()+
+						"</td> <td>" + E.get(i).getEmplacement()+
+						"</td> <td >" + E.get(i).getType().getNom()+
+						"</td> <td >" + E.get(i).getMarque().getNom()+
+						"</td> <td >" + E.get(i).getAnnee()+
+						"</td> <td> <input type=\"text\" name="+i+" value="+observation+"></td></tr>"
 						);
-			}
 		}
-		out.println("</table>");
-		out.println("<center>Conclusion <input type=\"text\" name=\"Conclusion\" value=\"Conclusion\">");
+		out.println("</tbody></table><br><br>"); 
+		out.println("<center><table><tr><td>Conclusion</td> <td></td> <td><textarea name=\"Conclusion\" rows=\"5\" cols=\"47\" required>"+conclusion+"</textarea></td></tr></table>");
 		out.println("<br><input type=\"submit\" value=\"Valider\"></center></form>");
+		session.setAttribute("Extincteurs",E);
 	%>
+	</div>
 </body>
 </html>

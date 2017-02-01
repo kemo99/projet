@@ -16,15 +16,12 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div  id="bloc_page">
 	<header class="header">
 		<a class="logo" href="http://www.desentec.fr/"><img
 			src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png">
 		</a>
-		<p class="head">
-		<center>
-			<strong>Desentec - Protection incendie</strong>
-		</center>
-		</p>
+		
 	</header>
 <%!String typeinterv, typeorg, numeroB;%>
 <%
@@ -42,5 +39,6 @@
 		out.println("<meta http-equiv=\"refresh\" content=\"1; URL=verificationextincteur.jsp\">");
 	}
 %>
+</div>
 </body>
 </html>

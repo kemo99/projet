@@ -5,9 +5,10 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div  id="bloc_page">
 <header class="header">
     	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
-    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+    	       
 </header>
 		<%@ page import="java.net.URL" %>
         <%@ page import="java.net.URLConnection" %>
@@ -65,5 +66,10 @@
 	out.println("<center><a href=\"installationextincteur.jsp\">Ajout d'un nouvel extincteur</a></center>");
 
 	out.println(
-			"<center><form action=\"interventionvalidee.jsp\"> <p> Conclusion : <input type=\"text\" name=\"conclusion\" /></p> <input type=\"submit\" value=\"Valider\"> </center>");
+			"<br><center><form action=\"interventionvalidee.jsp\"><table><tr>"+
+	"<td> <p> Conclusion  </td> <td><textarea  name=\"conclusion\" rows=\"5\" cols=\"47\" required placeholder=\"emplacement extincte...\"/></textarea></p> <td></tr></table>"+
+		"<input type=\"submit\" value=\"Valider\"> </center>");
 %>
+</div>
+</body>
+</html>

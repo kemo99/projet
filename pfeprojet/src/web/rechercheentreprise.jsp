@@ -4,10 +4,30 @@
 <title>Résultat de la recherche</title>
 <meta charset="UTF-8" />
 <link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="datatables.css" />
+    <script type="text/javascript" src="jquery.dataTables.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+
+
+     $(document).ready(function(){
+     $('#datatables').dataTable();
+    
+     })
+
+    </script>
 </head>
 
 
 <body>
+<div  id="bloc_page">
 	<header class="header">
 		<a class="logo" href="http://www.desentec.fr/"><img
 			src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png">
@@ -41,7 +61,7 @@
 
 
 	<%
-		out.println("Résultat de la recherche : ");
+		
 
 		nomEntreprise = request.getParameter("nomEntreprise");
 
@@ -49,22 +69,28 @@
 		Object obj = ctx.lookup(
 				"ejb:pfeprojet/pfeprojetSessions/" + "ServicepfeprojetBean!ejb.sessions.ServicepfeprojetRemote");
 		ServicepfeprojetRemote service = (ServicepfeprojetRemote) obj;
-		out.print(
-				"<br> <table border=\"1\" cellpadding=\"10\" cellspacing=\"1\" width=\"100%\"> <tr><th width=\"20%\" align=\"center\"> Nom de l'entreprise </th><th width=\"40%\" align=\"center\"> Adresse de l'entreprise </th><th width=\"20%\" align=\"center\"> Numero de telephone de l'entreprise </th><thth width=\"20%\" align=\"center\">  </th></tr>");
+		
+		out.print("<br> <br> <table id=\"datatables\" class=\"display\" >");
+		out.print("<thead><tr><th> Client </th><th> Adresse </th><th> Télephone </th><th> Mail </th><th>Interlocuteur </th><th>Fiche du client</th></tr>");
+		out.print("</thead><tbody>");
 		for (i = 0; i < service.rechercheEntreprise(nomEntreprise).size(); i++) {
-			out.print(" <tr><td align=\"center\"> "
-					+ service.rechercheEntreprise(nomEntreprise).get(i).getNom().toString()
-					+ "</td><td <td align=\"center\">"
-					+ service.rechercheEntreprise(nomEntreprise).get(i).getAdresse().toString()
-					+ "</td><td align=\"center\">"
-					+ service.rechercheEntreprise(nomEntreprise).get(i).getTel().toString()
-					+ "</td><td align=\"center\"> <form action=\"ficheentreprise\" method=\"GET\" ><input type=\"hidden\" id=\"thisField\" name=\"numEntreprise\" value="
+			out.print(" <tr><td > "
+					+ service.rechercheEntreprise(nomEntreprise).get(i).getNom()
+					+ "</td><td>"
+					+ service.rechercheEntreprise(nomEntreprise).get(i).getAdresse()
+					+ "</td><td>"
+					+ service.rechercheEntreprise(nomEntreprise).get(i).getTel()
+					+ "</td><td>"
+					+ service.rechercheEntreprise(nomEntreprise).get(i).getAdressemail()
+					+ "</td><td>"
+					+ service.rechercheEntreprise(nomEntreprise).get(i).getNominterlocuteur()
+					+ "</td><td> <form action=\"ficheentreprise\" method=\"GET\" ><input type=\"hidden\" id=\"thisField\" name=\"numEntreprise\" value="
 					+ service.rechercheEntreprise(nomEntreprise).get(i).getNumero()
 					+ "> <input type=\"submit\" name=\" Consulter la fiche \" value=\" Consulter la fiche \" /></form></td></tr>");
 		}
-		out.print("</table>");
+		out.print("</tbody></table>");
 	%>
-
+</div>
 </body>
 </html>
 

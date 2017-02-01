@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
 
    <head>
@@ -10,12 +9,8 @@
 <body>
  <header class="header">
     	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
-    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+    	       
  </header>
-  <br><br><br><br><br><br><br>
-
-	 
-	 
 		<%@ page import="java.net.URL" %>
         <%@ page import="java.net.URLConnection" %>
         <%@ page import="java.io.* " %>
@@ -32,31 +27,30 @@
 
 		
 		
-        <%! String nomEntreprise,adresseEntreprise,telEntreprise;
+        <%! String nomEntreprise,adresseEntreprise,telEntreprise, nomInterlocuteur, adresseemailEntreprise;
         
         %>
-        
   
         <%
            		nomEntreprise =request.getParameter("nomEntreprise");
            		adresseEntreprise=request.getParameter("adresse");
            		telEntreprise=request.getParameter("telEntreprise");
+           		nomInterlocuteur=request.getParameter("nomInterlocuteur");
+           		adresseemailEntreprise=request.getParameter("adresseemailEntreprise");
            		
+           		
+           		session = request.getSession();
            		InitialContext ctx = new InitialContext();
     			Object obj = ctx.lookup("ejb:pfeprojet/pfeprojetSessions/"+ "ServicepfeprojetBean!ejb.sessions.ServicepfeprojetRemote");
     			ServicepfeprojetRemote service = (ServicepfeprojetRemote) obj;
-    			service.ajouterEntreprise(nomEntreprise,adresseEntreprise,telEntreprise);
     			
-    			service.creercompteClient(service.getlisteEntreprises().get(service.getlisteEntreprises().size()-1).getNumero());
-    			// afficher le mot de passe et le login
+    			service.ajouterEntreprise(nomEntreprise,adresseEntreprise,adresseemailEntreprise,telEntreprise,nomInterlocuteur);    			
+    			
+    			service.creercompteClient(service.rechercheEntrepriseemail(adresseemailEntreprise).getNumero());
     			
     			out.println("<center>Ajout effectué avec succès <br>");
-    			
         		out.println("<a href=\"administrateur.html\">retour à la page d'accueil</a></center>");
         %>
-		         
-		
-
 </body>
 </html>
 

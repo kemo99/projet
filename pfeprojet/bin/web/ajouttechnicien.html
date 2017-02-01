@@ -7,49 +7,78 @@
      
     
    
-   <script type="text/javascript" charset="utf-8">
-   function checknum(num){
-	    var valide = /^0[1-6]\d{8}$/;
-	    if(valide.test(num){
-	        alert('Bon numéro !');
-	    }
-	    else{
-	        alert('Mauvais numéro !');
-	    }
-	}
-    </script> 
+   
    
    
   </head>
  <body>	
+  <div id="bloc_page">
   <header class="header">
     	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
-    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+    	       
  </header>
+ <Script language = "JavaScript"> 
+    fonction checknum (f) { 
+	   var = new RegExp valide (/ ^ 07 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9] [0-9] [0-9] $ /); 
+	   if (valide.test (f.telTechnicien.value)) { 
+	     return true; 
+	   } 
+	   else { 
+	     alert ( 'Mauvais numéro!'); 
+	   return false; 
+	   } 
+	  } 
+    </script> 
   <br><br><br><br><br><br><br>
- <div id="bloc_page">
 
-<form action="ajouttechnicien" method="post" >
+
+<form action="ajouttechnicien" method="post" onsubmit = "checknum de retour (this);" >
   <fieldset>
                 <legend><b>Remplir les champs du formulaire</b></legend>
 				<br />
+			<table>	
+		 <tr> <td>
                 <label for="nomTechnicien"><i>Nom du technicien <font color="#ff0000">*</font></i></label>
-                <input type="text" name="nomTechnicien" required placeholder="Nom..." size="20"/>
-                <br /><br />
+                </td> <td> 
+                <input type="text" name="nomTechnicien" required placeholder="Nom..." size="40" class="taille_input_annee"/>
+             </td>
+         </tr>  
+          <tr></tr>
+         <tr> <td>
                 <label for="prenomTechnicien"><i>Prenom du technicien <font color="#ff0000">*</font></i></label>
-                <input type="text" name="prenomTechnicien" required placeholder="Prenom..." size="20"/>
-                <br /><br />
-				<label for="adresse"><i>Adresse <font color="#ff0000">*</font></i></label>
-                <input type="text" name="adresse" required placeholder="Adresse..." size="40"/>
-                <br /><br />
+                </td> <td> 
+                <input type="text" name="prenomTechnicien" required placeholder="Prenom..." size="40" class="taille_input_annee"/>
+               </td>
+         </tr>  
+          <tr></tr>
+         <tr> <td>
+				 <label for="adresse"><i>Adresse <font color="#ff0000">*</font></i></label>
+			 </td> <td> 
+               
+                  <textarea name="adresse" rows="5" cols="47" required placeholder="Adresse Technicien..."></textarea> 
+             
+             </td>
+         </tr>  
+          <tr></tr>
+         <tr> <td>
                 <label for="telTechnicien"><i>numéro de téléphone <font color="#ff0000">*</font></i></label>
                 <!-- <input type="text" name="telTechnicien" required placeholder="Telephone..." size="20" onblur="Numero_Valid(this)"/>
                 
                  -->
-                 <input type="text" name="telTechnicien" required placeholder="Telephone..." size="20" onblur="checknum(this.value)"/>
-                
-                 <br /><br />
-                <input type="submit" value="Valider" >
+               </td> <td> 
+                 <input type="text" name="telTechnicien" required placeholder="Telephone..." size="40" class="taille_input_annee" />
+               </td>
+         </tr>  
+          <tr></tr>
+         <tr> <td>  
+                 <label for="adresseemail"><i>Adresse e-mail <font color="#ff0000">*</font></i></label>
+                </td> <td> 
+                  <input type="text" name="adresseemail" required placeholder="Adresse e-mail ..." size="40" class="taille_input_annee"/> 
+               </td>
+         </tr>  
+          <tr></tr>
+          </table>
+               <center> <input type="submit" value="Valider" > </center>
   </fieldset>
   
   

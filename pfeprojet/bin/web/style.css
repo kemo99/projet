@@ -32,7 +32,7 @@ h3 {
  }
  */
 header{
-    /*position:fixed;*/
+    position:fixed;
     left: 0;
     right: 0;
     height: 120px;
@@ -50,7 +50,7 @@ header{
 */
 img{
     float: left;
-    /*position: fixed;*/
+    position: fixed;
     top: 0;
     left: 20px;
 }
@@ -79,7 +79,7 @@ img{
 */
 #bloc_page
 {
-    width: 950px;
+    width: 1200px;
     margin: auto;
 }
 
@@ -124,3 +124,31 @@ div.loginlogo{
 }
 
 /* suite du css */
+.taille_input
+{
+  height: 50px;
+  width: 300px;
+  
+}
+.taille_input_annee
+{
+  height: 20px;
+  width: 300px;
+  
+}
+
+.class_select
+{
+  
+  width: 100px;
+  
+}
+
+.taille_area
+{
+  height: 100px;
+  width: 300px;
+  text-align : right;
+  /*vertical-align : top;*/
+  
+}

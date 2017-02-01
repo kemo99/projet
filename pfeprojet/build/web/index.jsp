@@ -24,7 +24,7 @@
     <!-- HEADER -->
     <header>
     	        <a href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
-    	       <!-- <center><strong>Desentec - Protection incendie</strong></center>  -->
+    	       
    </header>
  
    <!-- CONTAINER -->
@@ -73,10 +73,5 @@
   	
   </div>
     
-    
-    
-    
-   
-	
   </body>
 </html>

@@ -5,15 +5,12 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div  id="bloc_page">
 	<header class="header">
 		<a class="logo" href="http://www.desentec.fr/"><img
 			src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png">
 		</a>
-		<p class="head">
-		<center>
-			<strong>Desentec - Protection incendie</strong>
-		</center>
-		</p>
+		
 	</header>
 	<%@ page import="java.net.URL"%>
 	<%@ page import="java.net.URLConnection"%>
@@ -29,27 +26,55 @@
 	<%@ page import="java.text.DateFormat"%>
 	<%@ page import="java.util.HashSet"%>
 
-
-	<center>
+  <br><br><br>
+  
+	
 		<form action="installationextincteurvalidee">
-			<p>
-				Annee de fabrication de l'extincteur : <input type="text"
-					name="annee" required placeholder="Annee..." />
-			</p>
-			<p>
-				Emplacement de l'extincteur : <input type="text" name="emplacement"
-					required placeholder="emplacement..." />
-			</p>
-			<p>
-				Observations : <input type="text" name="observations" required
-					placeholder="observations..." />
-			</p>
-			<p>
-				Numero du Technicien : <input type="text" name="technicien" required
-					placeholder="numero du technicien..." />
-			</p>
-			<p>
-				Type de l'extincteur : <select name="typeextincteur">
+		 <fieldset>
+		 <legend><b>Installation extincteur</b></legend>
+				<br />
+		<table>
+		 <tr>
+		  
+			<td>
+                <label for="annee"><i>Annee de fabrication de l'extincteur <font color="#ff0000">*</font></i></label>
+                </td>	  
+		   <td> <input type="text"
+					name="annee" required placeholder="Annee..." size="40" class="taille_input_annee"/>
+			    </td>
+		</tr>
+		<tr></tr>
+		<tr>
+			<td> <label for="emplacement"><i>Emplacement de l'extincteur <font color="#ff0000">*</font></i></label>
+               
+				
+			</td> <td> 
+					<textarea name="emplacement" rows="5" cols="47" required placeholder="emplacement extincteur..."></textarea> 
+             
+			</td>
+	  </tr>
+	  <tr></tr>
+	  <tr> <td> <label for="observations"><i>Observations <font color="#ff0000">*</font></i></label>
+               
+				  
+			</td> <td> 
+					<textarea name="observations" rows="5" cols="47" required placeholder="observations......"></textarea> 
+             
+			</td>
+	 </tr>
+	 <tr></tr>
+	 <tr><td> <label for="technicien"><i>Numero du Technicien <font color="#ff0000">*</font></i></label>
+               
+				  
+		 </td> <td><input type="text" name="technicien" required
+					placeholder="numero du technicien..." size="40" class="taille_input_annee"/>
+			</td>
+	 </tr>
+	 <tr></tr>
+	 <tr> <td> <label for="typeextincteur"><i>Type de l'extincteur <font color="#ff0000">*</font></i></label>
+               
+				 
+			</td> <td> <select name="typeextincteur" class="class_select">
 					<%!String numBat;
 					int num, i;%>
 					<%
@@ -67,21 +92,27 @@
 									+ service.touslesTypeExtincteur().get(i).getNom() + "</option>");
 					%>
 				</select>
-			</p>
-
-			<p>
-				Marque de l'extincteur : <select name="marqueextincteur">
+			</td>
+		</tr>
+      <tr></tr>
+	  <tr> <td> <label for="marqueextincteur"><i>Marque de l'extincteur <font color="#ff0000">*</font></i></label>
+               
+				  
+			</td> <td> <select name="marqueextincteur" class="class_select">
 					<%
 						for (i = 0; i < service.touteslesMarqueExtincteur().size(); i++)
 							out.println("<option value=" + service.touteslesMarqueExtincteur().get(i).getNumero() + ">"
 									+ service.touteslesMarqueExtincteur().get(i).getNom() + "</option>");
 					%>
 				</select>
-			</p>
-			<br>
-			<input type="submit" value="Valider">
+			</td>
+			</tr>
+			
+			</table> <br>
+		<center>	<input type="submit" value="Valider"> </center>
+			</fieldset>
 		</form>
-	</center>
-
+ 
+</div>
 </body>
 </html>

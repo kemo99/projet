@@ -8,9 +8,10 @@
   </head>
 
 <body>
+<div id="bloc_page">
  <header class="header">
     	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
-    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+    	       
  </header>
   <br><br><br><br><br><br><br>
 
@@ -74,7 +75,7 @@
         %>
 		         
 		
-
+</div>
 </body>
 </html>
 

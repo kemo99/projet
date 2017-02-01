@@ -6,9 +6,10 @@
     <link href="style.css" rel="stylesheet" type="text/css">
   </head>
 <body>
+<div  id="bloc_page">
  <header class="header">
     	        <a class="logo" href="http://www.desentec.fr/"><img src="http://www.desentec.fr/wp-content/uploads/2015/06/logo-site.png"> </a>
-    	       <p class="head"><center><strong>Desentec - Protection incendie</strong></center></p>
+    	       
  </header>
   <%!
   	String numBatiment;
@@ -20,30 +21,46 @@
   		session.setAttribute("num",numBatiment);
   %>
   
-<center>Type de l'intervention
- <FORM action="intervention.jsp">
-	<INPUT id="installation" type= "radio" name="choixinterv" value="installation"/> 
-	<label for="installation">Installation</label>
-	<INPUT id="verification" type= "radio" name="choixinterv" value="verification"/>
-	<label for="verification">Vérification</label> 
-	<INPUT id="maintenanceprev" type= "radio" name="choixinterv" value="maintenanceprev"/> 
-	<label for="maintenanceprev">Maintenance Préventive</label> 
-	<INPUT id="maintenancecorr" type= "radio" name="choixinterv" value="maintenancecorr"/> 
-	<label for="maintenancecorr">Maintenance Corrective</label>
+  
+  
+  
+  <br>
+  <center><h2>  Choix d'une intervention sur les organes de sécurité </h2></center> 
+  <br>
 
-<br><br>Type de l'organe de sécurité 
-	<br><br><INPUT id="extincteur" type= "radio" name="choixorg" value="extincteur">
-	<label for="extincteur">Extincteur</label> 
+ <FORM action="intervention.jsp">
+ <fieldset>
+    <legend><b>Type de l'intervention</b></legend> <br />
+           
+	<INPUT id="installation" type= "radio" name="choixinterv" value="installation"/> 
+	<label for="installation">Installation</label> &nbsp;&nbsp;&nbsp;
+	<INPUT id="verification" type= "radio" name="choixinterv" value="verification"/>
+	<label for="verification">Vérification</label> &nbsp;&nbsp;&nbsp;
+	<INPUT id="maintenanceprev" type= "radio" name="choixinterv" value="maintenanceprev"/> 
+	<label for="maintenanceprev">Maintenance Préventive</label> &nbsp;&nbsp;&nbsp;
+	<INPUT id="maintenancecorr" type= "radio" name="choixinterv" value="maintenancecorr"/> 
+	<label for="maintenancecorr">Maintenance Corrective</label> 
+
+ </fieldset>
+ 
+<br><br>
+<fieldset>
+    <legend><b>Type de l'organe de sécurité </b></legend> 
+   
+	<br><INPUT id="extincteur" type= "radio" name="choixorg" value="extincteur">
+	<label for="extincteur">Extincteur</label> &nbsp;&nbsp;&nbsp;
 	<INPUT id="eclairage" type= "radio" name="choixorg" value="eclairage"> 
-	<label for="eclairage">Eclairage</label> 
+	<label for="eclairage">Eclairage</label> &nbsp;&nbsp;&nbsp;
 	<INPUT id="pharmacie" type= "radio" name="choixorg" value="pharmacie"> 
-	<label for="pharmacie">Pharmacie</label>
+	<label for="pharmacie">Pharmacie</label> &nbsp;&nbsp;&nbsp;
 	<INPUT id="signaletique" type= "radio" name="choixorg" value="signaletique"> 
 	<label for="signaletique">Signalétique</label> 
-	
-	<br><br><input type="submit" value="Valider">
-	
+
+</fieldset>	
+	<br><br><center><input type="submit" value="Valider"></center>
+
 </FORM>
-</center>
+
+</div>
  </body>
  </html>
